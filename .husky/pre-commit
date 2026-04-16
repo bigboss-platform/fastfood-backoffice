@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd apps/fastfood-backoffice
+
+echo "Running type check..."
+pnpm type-check
+if [ $? -ne 0 ]; then
+  echo "Type check failed. Commit aborted."
+  exit 1
+fi
+
+echo "Running lint..."
+pnpm lint
+if [ $? -ne 0 ]; then
+  echo "Lint failed. Commit aborted."
+  exit 1
+fi
+
+echo "Running unit tests..."
+pnpm test:unit --run
+if [ $? -ne 0 ]; then
+  echo "Unit tests failed. Commit aborted."
+  exit 1
+fi
+
+echo "All checks passed."

@@ -1,0 +1,18 @@
+.menuManager {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.menuManagerTitle {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.menuManagerPlaceholder {
+    color: var(--color-text-secondary);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-lg);
+}

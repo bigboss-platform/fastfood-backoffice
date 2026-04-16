@@ -1,0 +1,8 @@
+FROM node:20-slim
+
+RUN npm install -g pnpm
+
+ENV PNPM_HOME="/root/.local/share/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+WORKDIR /workspace

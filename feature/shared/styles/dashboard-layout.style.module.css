@@ -1,0 +1,22 @@
+.dashboardLayout {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100dvh;
+}
+
+.dashboardLayoutMain {
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+    animation: fade-in-up 0.3s ease both;
+}
+
+@media (max-width: 767px) {
+    .dashboardLayout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .dashboardLayoutMain {
+        padding: var(--spacing-md);
+    }
+}
