@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import styles from "../styles/menu-manager.style.module.css"
 
 export function MenuManagerContainer() {

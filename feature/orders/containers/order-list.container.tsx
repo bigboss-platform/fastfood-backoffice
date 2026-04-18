@@ -2,22 +2,17 @@
 
 import { useState } from "react"
 import type { IOrder } from "../interfaces/order.interface"
-import { OrderStatus, PaymentStatus } from "../interfaces/order.interface"
-import { EMPTY_ORDER, ORDER_STATUS_DISPLAY, PAYMENT_STATUS_DISPLAY } from "../constants/order.constant"
+import { OrderStatus } from "../interfaces/order.interface"
+import { ORDER_STATUS_DISPLAY, PAYMENT_STATUS_DISPLAY } from "../constants/order.constant"
 import styles from "../styles/order-list.style.module.css"
 
 export function OrderListContainer() {
-    const [orders, setOrders] = useState<IOrder[]>([])
-    const [selectedOrder, setSelectedOrder] = useState<IOrder>(EMPTY_ORDER)
+    const [orders] = useState<IOrder[]>([])
     const [statusFilter, setStatusFilter] = useState<OrderStatus | "">("")
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [isLoading] = useState<boolean>(false)
 
     function handleStatusFilterChange(event: React.ChangeEvent<HTMLSelectElement>) {
         setStatusFilter(event.target.value as OrderStatus | "")
-    }
-
-    function handleSelectOrder(order: IOrder) {
-        setSelectedOrder(order)
     }
 
     return (
@@ -51,7 +46,6 @@ export function OrderListContainer() {
                         <button
                             type="button"
                             className={styles.orderListItemButton}
-                            onClick={() => handleSelectOrder(order)}
                         >
                             <span className={styles.orderListItemId}>#{order.id.slice(-6)}</span>
                             <span className={styles.orderListItemStatus}>

@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react"
 import { fetchOrders } from "@/feature/orders/services/order.service"
-import { IOrder } from "@/feature/orders/interfaces/order.interface"
+import type { IOrder } from "@/feature/orders/interfaces/order.interface"
 import { EMPTY_ORDER } from "@/feature/orders/constants/order.constant"
 
 interface IUseOrderList {

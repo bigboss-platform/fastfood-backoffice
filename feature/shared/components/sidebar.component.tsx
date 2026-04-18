@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useAdminSession } from "@/feature/auth/hooks/use-admin-session.hook"
 import styles from "../styles/sidebar.style.module.css"
 
 interface SidebarNavItem {
@@ -21,11 +22,16 @@ const NAV_ITEMS: SidebarNavItem[] = [
 
 export function Sidebar() {
     const pathname = usePathname()
+    const { profile, logout } = useAdminSession()
+    const hasAdminName = Boolean(profile.name)
 
     return (
         <aside className={styles.sidebar} aria-label="Navegación principal">
             <div className={styles.sidebarBrand}>
                 <span className={styles.sidebarBrandName}>BigBoss</span>
+                {hasAdminName && (
+                    <span className={styles.sidebarAdminName}>{profile.name}</span>
+                )}
             </div>
             <nav className={styles.sidebarNav}>
                 <ul className={styles.sidebarNavList}>
@@ -34,7 +40,7 @@ export function Sidebar() {
                             <Link
                                 href={item.href}
                                 className={`${styles.sidebarNavLink} ${pathname === item.href ? styles.sidebarNavLinkActive : ""}`}
-                                aria-current={pathname === item.href ? "page" : undefined}
+                                {...(pathname === item.href && { "aria-current": "page" as const })}
                             >
                                 <span className={styles.sidebarNavIcon} aria-hidden="true">
                                     {item.icon}
@@ -45,6 +51,16 @@ export function Sidebar() {
                     ))}
                 </ul>
             </nav>
+            <div className={styles.sidebarFooter}>
+                <button
+                    data-testid="logout-button"
+                    type="button"
+                    className={styles.logoutButton}
+                    onClick={logout}
+                >
+                    Cerrar sesión
+                </button>
+            </div>
         </aside>
     )
 }

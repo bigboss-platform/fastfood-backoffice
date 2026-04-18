@@ -18,7 +18,7 @@ const EMPTY_DASHBOARD_STATS: IDashboardStats = {
 }
 
 export function DashboardContainer() {
-    const [stats, setStats] = useState<IDashboardStats>(EMPTY_DASHBOARD_STATS)
+    const [stats] = useState<IDashboardStats>(EMPTY_DASHBOARD_STATS)
 
     return (
         <section className={styles.dashboard}>
