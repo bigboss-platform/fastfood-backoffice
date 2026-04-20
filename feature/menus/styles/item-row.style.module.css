@@ -1,0 +1,205 @@
+.itemRow {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-surface);
+    transition: opacity 0.2s;
+}
+
+.itemRow.unavailable {
+    opacity: 0.45;
+}
+
+.dragHandle {
+    cursor: grab;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.dragHandle:active {
+    cursor: grabbing;
+}
+
+.itemPhoto {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.itemPhotoPlaceholder {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--color-border);
+    flex-shrink: 0;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.itemName {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.itemDescription {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.itemPrice {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+}
+
+.itemActions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.toggleLabel {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggleInput {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleSlider {
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    background: var(--color-border);
+    border-radius: 10px;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.toggleSlider::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s;
+}
+
+.toggleInput:checked + .toggleSlider {
+    background: var(--color-primary);
+}
+
+.toggleInput:checked + .toggleSlider::after {
+    transform: translateX(16px);
+}
+
+.editButton {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+}
+
+.editButton:hover {
+    background: var(--color-bg-surface);
+}
+
+.deleteButton {
+    background: none;
+    border: 1px solid var(--color-error);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    color: var(--color-error);
+    white-space: nowrap;
+}
+
+.deleteButton:hover {
+    background: var(--color-error);
+    color: #fff;
+}
+
+.deleteConfirm {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.deleteConfirmText {
+    font-size: var(--font-size-sm);
+    color: var(--color-error);
+    white-space: nowrap;
+}
+
+.confirmYesButton {
+    background: var(--color-error);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.confirmNoButton {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    .itemPhoto {
+        width: 56px;
+        height: 56px;
+    }
+
+    .itemPhotoPlaceholder {
+        width: 56px;
+        height: 56px;
+    }
+
+    .itemActions {
+        flex-wrap: nowrap;
+    }
+}

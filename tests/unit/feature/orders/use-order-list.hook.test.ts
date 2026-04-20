@@ -36,12 +36,12 @@ describe("useOrderList", () => {
     })
 
     it("starts with empty order list", () => {
-        const { result } = renderHook(() => useOrderList("test-token"))
+        const { result } = renderHook(() => useOrderList())
         expect(result.current.orders).toHaveLength(0)
     })
 
     it("loads orders after refresh is called", async () => {
-        const { result } = renderHook(() => useOrderList("test-token"))
+        const { result } = renderHook(() => useOrderList())
         await act(async () => {
             await result.current.refresh()
         })
@@ -49,12 +49,12 @@ describe("useOrderList", () => {
     })
 
     it("statusFilter defaults to empty string (all orders)", () => {
-        const { result } = renderHook(() => useOrderList("test-token"))
+        const { result } = renderHook(() => useOrderList())
         expect(result.current.statusFilter).toBe("")
     })
 
     it("setStatusFilter updates the filter", () => {
-        const { result } = renderHook(() => useOrderList("test-token"))
+        const { result } = renderHook(() => useOrderList())
         act(() => {
             result.current.setStatusFilter("preparando")
         })

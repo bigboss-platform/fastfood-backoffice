@@ -22,6 +22,8 @@ export interface IOrder {
     status: OrderStatus
     deliveryType: string
     deliveryAddress: string
+    deliveryLat: number
+    deliveryLng: number
     deliveryCost: number
     subtotal: number
     total: number

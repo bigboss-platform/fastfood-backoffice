@@ -11,6 +11,7 @@
         "test": "vitest",
         "test:ci": "vitest run",
         "test:coverage": "vitest run --coverage",
+        "test:e2e": "playwright test",
         "prepare": "husky"
     },
     "dependencies": {
@@ -19,6 +20,7 @@
         "react-dom": "^19.0.0"
     },
     "devDependencies": {
+        "@playwright/test": "^1.49.0",
         "@bigboss/eslint-config": "workspace:*",
         "@bigboss/typescript-config": "workspace:*",
         "@testing-library/jest-dom": "^6.6.0",

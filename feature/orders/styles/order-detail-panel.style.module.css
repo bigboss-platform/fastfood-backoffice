@@ -1,0 +1,286 @@
+.panel {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-background, #fff);
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+    overflow: hidden;
+}
+
+.panelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.panelTitle {
+    font-size: var(--font-size-xl, 20px);
+    font-weight: var(--font-weight-bold);
+}
+
+.closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--touch-target-min);
+    height: var(--touch-target-min);
+    border: none;
+    background: transparent;
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+}
+
+.closeButton:hover {
+    background-color: var(--color-border);
+}
+
+.panelBody {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.infoSection,
+.itemsSection,
+.statusSection,
+.paymentSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.sectionTitle {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-sm);
+}
+
+.infoList {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+}
+
+.infoList dt {
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+.mapsLink {
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    text-decoration: underline;
+}
+
+.itemsList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.itemRow {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: var(--spacing-md);
+    align-items: center;
+    font-size: var(--font-size-sm);
+}
+
+.itemName {
+    font-weight: var(--font-weight-medium);
+}
+
+.itemQty {
+    color: var(--color-text-secondary);
+}
+
+.itemPrice {
+    font-weight: var(--font-weight-bold);
+    text-align: right;
+}
+
+.totals {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-border);
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.totalRowFinal {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text, #111);
+}
+
+.currentStatus {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+}
+
+.statusActions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.advanceButton {
+    padding: var(--spacing-md);
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    min-height: var(--touch-target-min);
+    transition: opacity var(--transition-fast);
+}
+
+.advanceButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cancelOrderButton {
+    padding: var(--spacing-md);
+    background-color: transparent;
+    color: #dc2626;
+    border: 1px solid #dc2626;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    min-height: var(--touch-target-min);
+    transition: background-color var(--transition-fast);
+}
+
+.cancelOrderButton:hover {
+    background-color: #fef2f2;
+}
+
+.cancelOrderButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.paymentStatus {
+    font-size: var(--font-size-sm);
+}
+
+.editButton {
+    align-self: flex-start;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    min-height: var(--touch-target-min);
+}
+
+.paymentForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.formLabel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs, 4px);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    background-color: var(--color-surface);
+    min-height: var(--touch-target-min);
+    width: 100%;
+}
+
+.formTextarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.formActions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.saveButton {
+    flex: 1;
+    padding: var(--spacing-md);
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    min-height: var(--touch-target-min);
+    transition: opacity var(--transition-fast);
+}
+
+.saveButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cancelButton {
+    padding: var(--spacing-md);
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    min-height: var(--touch-target-min);
+}
+
+.cancelButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+    .panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: auto;
+        width: 420px;
+        border-left: 1px solid var(--color-border);
+        box-shadow: var(--shadow-md);
+    }
+}

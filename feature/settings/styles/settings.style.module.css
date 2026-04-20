@@ -9,10 +9,272 @@
     font-weight: var(--font-weight-bold);
 }
 
-.settingsPlaceholder {
+.unsavedWarning {
+    background-color: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: #664d03;
+}
+
+.settingsTabs {
+    display: flex;
+    gap: var(--spacing-xs);
+    border-bottom: 2px solid var(--color-border);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.settingsTabs::-webkit-scrollbar {
+    display: none;
+}
+
+.settingsTab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
     color: var(--color-text-secondary);
-    padding: var(--spacing-2xl);
-    text-align: center;
-    border: 2px dashed var(--color-border);
-    border-radius: var(--radius-lg);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+    min-height: var(--touch-target-min);
+}
+
+.settingsTab:hover {
+    color: var(--color-text-primary);
+}
+
+.settingsTabActive {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+.settingsContent {
+    min-height: 400px;
+}
+
+.settingsSectionHidden {
+    display: none;
+}
+
+.settingsLoading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.settingsLoadingSkeleton {
+    display: block;
+    height: 3rem;
+    border-radius: var(--radius-md);
+    background: linear-gradient(
+        90deg,
+        var(--color-border) 25%,
+        var(--color-surface-raised) 50%,
+        var(--color-border) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.settingsForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    max-width: 600px;
+}
+
+.formField {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+    .formRow {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.formLabel {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+.formInput,
+.formTextarea {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-md);
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    transition: border-color var(--transition-fast);
+    width: 100%;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.formTextarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+.formTextareaOver {
+    border-color: var(--color-error);
+}
+
+.formFieldError {
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
+}
+
+.formError {
+    font-size: var(--font-size-sm);
+    color: var(--color-error);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: #fff5f5;
+    border: 1px solid var(--color-error);
+    border-radius: var(--radius-md);
+}
+
+.formButton {
+    align-self: flex-start;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-xl);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    min-height: var(--touch-target-min);
+    transition: background-color var(--transition-fast);
+}
+
+.formButton:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+}
+
+.formButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.charCounter {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    text-align: right;
+}
+
+.charCounterOver {
+    color: var(--color-error);
+    font-weight: var(--font-weight-medium);
+}
+
+.toggleLabel {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    cursor: pointer;
+    user-select: none;
+    min-height: var(--touch-target-min);
+}
+
+.toggleText {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+.toggleInput {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleTrack {
+    display: inline-block;
+    width: 3rem;
+    height: 1.5rem;
+    background-color: var(--color-border);
+    border-radius: var(--radius-full);
+    position: relative;
+    transition: background-color var(--transition-base);
+    flex-shrink: 0;
+}
+
+.toggleTrack::after {
+    content: "";
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: transform var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.toggleInput:checked + .toggleTrack {
+    background-color: var(--color-primary);
+}
+
+.toggleInput:checked + .toggleTrack::after {
+    transform: translateX(1.5rem);
+}
+
+.mapPicker {
+    width: 100%;
+    height: 200px;
+    background-color: #dbeafe;
+    background-image:
+        linear-gradient(var(--color-border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+    background-size: 24px 24px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    position: relative;
+    cursor: crosshair;
+    overflow: hidden;
+}
+
+.mapPin {
+    position: absolute;
+    left: var(--pin-left, 50%);
+    top: var(--pin-top, 50%);
+    transform: translate(-50%, -50%);
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    line-height: 1;
+    pointer-events: none;
 }

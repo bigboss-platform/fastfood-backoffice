@@ -1,0 +1,114 @@
+.card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.cardWarning {
+    border-color: var(--color-warning);
+    background-color: var(--color-warning-surface, var(--color-surface));
+}
+
+.cardError {
+    border-color: var(--color-error);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cardId {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+}
+
+.cardDeliveryBadge {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--color-surface-raised);
+    border-radius: var(--radius-full);
+}
+
+.cardMeta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.cardElapsed {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.cardErrorIndicator {
+    font-size: var(--font-size-sm);
+    color: var(--color-error);
+    font-weight: var(--font-weight-medium);
+}
+
+.cardItems {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    flex: 1;
+}
+
+.cardItem {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.cardItemQuantity {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    min-width: 2rem;
+}
+
+.cardItemName {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    flex: 1;
+}
+
+.cardItemNote {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-style: italic;
+    width: 100%;
+}
+
+.cardButton {
+    width: 100%;
+    padding: var(--spacing-md);
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.cardButton:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+}
+
+.cardButton:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.cardButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

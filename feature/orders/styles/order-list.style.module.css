@@ -1,3 +1,17 @@
+.orderListPage {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.orderListMain {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    overflow-y: auto;
+}
+
 .orderList {
     display: flex;
     flex-direction: column;
@@ -6,15 +20,43 @@
 
 .orderListHeader {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     gap: var(--spacing-md);
-    flex-wrap: wrap;
 }
 
 .orderListTitle {
     font-size: var(--font-size-2xl);
     font-weight: var(--font-weight-bold);
+}
+
+.filterBar {
+    display: flex;
+    gap: var(--spacing-sm);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-xs, 4px);
+}
+
+.filterButton {
+    flex-shrink: 0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    white-space: nowrap;
+    min-height: var(--touch-target-min);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.filterButton:hover {
+    border-color: var(--color-primary);
+}
+
+.filterButtonActive {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
 }
 
 .orderListFilter {
@@ -83,6 +125,28 @@
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+    .orderListPage {
+        flex-direction: row;
+    }
+
+    .orderListMain {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .orderListHeader {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .filterBar {
+        flex-wrap: wrap;
+        overflow-x: visible;
+    }
 }
 
 @media (max-width: 640px) {

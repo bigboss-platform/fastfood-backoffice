@@ -1,7 +1,15 @@
 .menuManager {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
+}
+
+.menuHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
 }
 
 .menuManagerTitle {
@@ -9,10 +17,308 @@
     font-weight: var(--font-weight-bold);
 }
 
-.menuManagerPlaceholder {
+.newSectionButton {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+}
+
+.newSectionButton:hover {
+    opacity: 0.9;
+}
+
+.newSectionForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-surface);
+}
+
+.newSectionInput {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-md);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.newSectionInput:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.newSectionFormActions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end;
+}
+
+.loadingText {
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.emptyState {
     color: var(--color-text-secondary);
     padding: var(--spacing-2xl);
     text-align: center;
     border: 2px dashed var(--color-border);
     border-radius: var(--radius-lg);
+}
+
+.sectionList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.sectionRow {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-surface);
+    overflow: hidden;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.dragHandle {
+    cursor: grab;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-lg);
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.dragHandle:active {
+    cursor: grabbing;
+}
+
+.collapseButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+    padding: 0;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.sectionName {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    flex: 1;
+    min-width: 0;
+}
+
+.sectionNameInput {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.sectionNameInput:focus {
+    outline: none;
+}
+
+.sectionItemCount {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.sectionActions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.editSectionButton {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    color: var(--color-text-primary);
+}
+
+.editSectionButton:hover {
+    background: var(--color-bg-surface);
+}
+
+.deleteSectionButton {
+    background: none;
+    border: 1px solid var(--color-error);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    color: var(--color-error);
+}
+
+.deleteSectionButton:hover {
+    background: var(--color-error);
+    color: #fff;
+}
+
+.deleteConfirm {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.deleteWarning {
+    font-size: var(--font-size-sm);
+    color: var(--color-error);
+}
+
+.confirmYesButton {
+    background: var(--color-error);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+}
+
+.confirmNoButton {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    color: var(--color-text-primary);
+}
+
+.toggleLabel {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: var(--spacing-xs);
+    position: relative;
+}
+
+.toggleInput {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggleSlider {
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    background: var(--color-border);
+    border-radius: 10px;
+    position: relative;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.toggleSlider::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s;
+}
+
+.toggleInput:checked + .toggleSlider {
+    background: var(--color-primary);
+}
+
+.toggleInput:checked + .toggleSlider::after {
+    transform: translateX(16px);
+}
+
+.sectionItems {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.addItemButton {
+    align-self: flex-start;
+    background: none;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-xs);
+}
+
+.addItemButton:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.cancelButton {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    color: var(--color-text-primary);
+}
+
+.saveButton {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+}
+
+.saveButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+    .sectionHeader {
+        flex-wrap: nowrap;
+    }
+
+    .deleteConfirm {
+        flex-wrap: nowrap;
+    }
 }
